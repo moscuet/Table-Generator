@@ -1,5 +1,5 @@
 //  const  =document.querySelector('')
-let numRow,numColm,tWidth,borWidth,fSize,fweight,textAlig,borColp,tableBg
+let numRow,numColm,tWidth,borWidth,fSize,fweight,textAlig,borColp,tableBg,headBg,bodybg,borColor,fColor
 let tableContainer= document.querySelector('#table_container')
 let tableHeadArray=['th-a', 'th-b','th-c','th-d','th-e','th-f','th-g','th-h']
 const numOfRow =document.querySelector('#num_Row')
@@ -18,13 +18,19 @@ const textAlign=document.querySelector('#text_align')
 const fontSize=document.querySelector('#font_size')
 const btnTableGenerate =document.querySelector('#btn_table_generate')
 const btnCodeGenerate =document.querySelector('#btn_code_generate')
-function createTable(numRow,numColm,tWidth,borWidth,fSize,fType,fweight,textAlig,borColp,tableBg) {
+
+
+function createTable(numRow,numColm,tWidth,borWidth,fSize,fType,fweight,textAlig,borColp,tableBg,headBg,bodybg,borColor,fColor) {
 //fType,fweight,textAlign,fSize
-  tableContainer.innerHTML= ''       
+  tableContainer.innerHTML= ''  
+  tableContainer.textContent='' 
+  console.log(tableContainer.textContent)
+  console.log(tableContainer.innerHTML)
   const table = document.createElement("table");
   const tableBody = document.createElement("tbody");
   const tableHead = document.createElement("thead");
   const tableFooter = document.createElement("tfoot");
+  printHtml=document.createElement('div')   //
   table.setAttribute('width',tWidth)
   table.setAttribute('border',borWidth)
   table.style.fontSize = fSize
@@ -33,9 +39,10 @@ function createTable(numRow,numColm,tWidth,borWidth,fSize,fType,fweight,textAlig
   table.style.textAlign=textAlig
   table.style.borderCollapse=borColp
   table.style.background=tableBg
-   console.log(tableBg)
-    // console.log(fweight)
-  //table.style.fontFamily=fType
+  tableHead.style.background=headBg
+  tableBody.style.background= bodybg
+  table.style.borderColor=borColor
+  table.style.color=fColor
 
     for ( let i=0 ; i<numRow;i++){                       
           //let row =document.createElement('tr')
@@ -75,12 +82,11 @@ function createTable(numRow,numColm,tWidth,borWidth,fSize,fType,fweight,textAlig
             row.setAttribute('class','row1 row2')
             tableFooter.append(row);         
           }
-    }   
+    }  
     table.append(tableHead,tableBody,tableFooter)
     tableContainer.append(table);
+     return tableContainer
 }
-
-
 
 btn_table_generate.addEventListener('click', function(){
 numRow= numOfRow.value
@@ -88,11 +94,10 @@ numColm=numOfColm.value
 tWidth=tableWidth.value+'%'
 borWidth=borderWidth.value+'px solid black'
 tableBg=tableBackground.value
-console.log(tableBg)
-// headBg=headBackground.value
-// bodybg=bodyBackground.value
-// borColor=borderColor.value
-// fColor=fontColor.value
+headBg=headBackground.value
+bodybg=bodyBackground.value
+borColor=borderColor.value
+fColor=fontColor.value
 borColp=borderCollpse.value
 if(borderCollpse.checked) borColp='collapse'
 else borColp='separate'
@@ -101,17 +106,9 @@ fweight=fontWeight.value
 textAlig=textAlign.value
 fSize=fontSize.value+'px'
 
-
-createTable(numRow,numColm,tWidth,borWidth,fSize,fType,fweight,textAlig,borColp,tableBg)
-
+createTable(numRow,numColm,tWidth,borWidth,fSize,fType,fweight,textAlig,borColp,tableBg,headBg,bodybg,borColor,fColor)
 })
 
-
-
-
-btn_code_generate.addEventListener('click', function(){
+btn_code_generate.addEventListener('click', function(){ 
+  tableContainer.textContent= tableContainer.innerHTML
 })
- //consol,
-
-  //console.log(numRow)
-  
