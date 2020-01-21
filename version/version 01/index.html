@@ -24,32 +24,31 @@
     </style>
 </head>
 <body>
-    <div class="inputContainer">
-
-        <div id="digitInput">
+    <div id="inputContainer">
+        <div id="digitInput"">
             <label for="num_Row">Number of rows  </label>
-            <input type="number" id="num_Row" value ="5" >
+            <input type="number" class="clicking" id="num_Row" value ="10" >
             <label for="num_Colm">Number of columns  </label>
-            <input type="number" id="num_Colm" value="4">
+            <input type="number" class="clicking" id="num_Colm" value="5">
             <label for="table_width">Table Width in %  </label>
-            <input type="number" id="table_width" value="80">
+            <input type="number" class="clicking"  id="table_width" value="100">
             <label for="border_width">Border Width in Pixel</label>
-            <input type="number" id="border_width" value="2">   
+            <input type="number" class="clicking" id="border_width" value="2">   
         </div>
         
         <div id="colorInput">
             <label for="table_background">Table background color</label>
-            <input type="color" id="table_background" value="#E4EEC9">
+            <input type="color" id="table_background"class="clicking" value="#E4EEC9">
            
             <label for="head_background">Head background color</label>
-            <input type="color" id="head_background">
+            <input type="color" id="head_background" class="clicking"value="#BFF433">
                       
             <label for="body_background"> Body background color </label>
-            <input type="color" id="body_background">
+            <input type="color" id="body_background" class="clicking"value="#7EF25A">
             <label for="border_color"> Border Color</label>
-            <input type="color" id="border_color">
+            <input type="color" id="border_color" class="clicking"value="#95261D">
             <label for="font_color">Font color</label>
-            <input type="color" id="font_color">
+            <input type="color" id="font_color" class="clicking"value="#293B2B">
 
 
 
@@ -57,11 +56,11 @@
         </div>
 
         <div id="fontInput">
-            <input type="checkbox" id="border_collapse" value='collapse'checked>
+            <input type="checkbox" id="border_collapse"  class="clicking" value='collapse'checked>
             <label for="border_collapse">Border collapse</label>
            
             <label for="font_type">Font Type</label>
-            <select name="fontType" id="font_type">
+            <select name="fontType" class="selecting" id="font_type">
                 <optgroup style="font-family:Arial, Helvetica, sans-serif"> <option>Arial</option> </optgroup>               
                 <optgroup style="font-family: 'Courier New', Courier, monospace"><option>Courier</option></optgroup>        
                 <optgroup style="font-family:'Times New Roman', Times, serif"><option>Times New Roman</option> </optgroup>
@@ -75,14 +74,13 @@
             </select>
 
             <label for="font_weight">Font Weight</label>
-            <select name="fontWeight" id="font_weight">
+            <select name="fontWeight" class="selecting" id="font_weight">
                 <option value="normal">normal</option>
                 <option value="light">Light</option>
                 <option value="lighter">lighter</option>
                 <option value="bold">bold</option>
                 <option value="bolder">bolder</option>
                 <option value="200">100</option>
-                <option value="200">200</option>
                 <option value="400">400</option>
                 <option value="500">500</option>
                 <option value="700">700</option>
@@ -91,7 +89,7 @@
            
            
             <label for="text_align">Text Align </label>
-            <select name="textAlign" id="text_align" va>
+            <select name="textAlign" class="selecting" id="text_align" va>
                 <option value="center">center</option>
                 <option value="left">left</option>
                 <option value="right">right</option>
@@ -99,19 +97,21 @@
             </select>
             
             <label for="font_size">Font Size</label>
-            <input type="number" id="font_size" value="16">
+            <input type="number" class="clicking" id="font_size" value="16">
 
             
 
         </div>
-        
-        <div class="generatTab">
-            <button type="submit" id="btn_table_generate">Generate Table</button>
-            <button type="submit" id="btn_code_generate">Generate Code</button>
-
-        </div>
+       
+   
+   
+    <div class="generatTab">
+        <button type="submit" id="btn_table_generate">Generate Table</button>
+        <button type="submit" id="btn_code_generate">Generate Code</button>
 
     </div>
+
+    
     
     <div id="table_container">
       
