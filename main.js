@@ -18,10 +18,10 @@ const textAlign=document.querySelector('#text_align')
 const fontSize=document.querySelector('#font_size')
 const btnTableGenerate =document.querySelector('#btn_table_generate')
 const btnCodeGenerate =document.querySelector('#btn_code_generate')
+const inputContainer= document.querySelector('#inputContainer')
 
 
 function createTable(numRow,numColm,tWidth,borWidth,fSize,fType,fweight,textAlig,borColp,tableBg,headBg,bodybg,borColor,fColor) {
-//fType,fweight,textAlign,fSize
   tableContainer.innerHTML= ''  
   tableContainer.textContent='' 
   console.log(tableContainer.textContent)
@@ -30,7 +30,7 @@ function createTable(numRow,numColm,tWidth,borWidth,fSize,fType,fweight,textAlig
   const tableBody = document.createElement("tbody");
   const tableHead = document.createElement("thead");
   const tableFooter = document.createElement("tfoot");
-  printHtml=document.createElement('div')   //
+  //
   table.setAttribute('width',tWidth)
   table.setAttribute('border',borWidth)
   table.style.fontSize = fSize
@@ -88,27 +88,48 @@ function createTable(numRow,numColm,tWidth,borWidth,fSize,fType,fweight,textAlig
      return tableContainer
 }
 
-btn_table_generate.addEventListener('click', function(){
-numRow= numOfRow.value
-numColm=numOfColm.value
-tWidth=tableWidth.value+'%'
-borWidth=borderWidth.value+'px solid black'
-tableBg=tableBackground.value
-headBg=headBackground.value
-bodybg=bodyBackground.value
-borColor=borderColor.value
-fColor=fontColor.value
-borColp=borderCollpse.value
-if(borderCollpse.checked) borColp='collapse'
-else borColp='separate'
-fType=fontType.value
-fweight=fontWeight.value
-textAlig=textAlign.value
-fSize=fontSize.value+'px'
 
-createTable(numRow,numColm,tWidth,borWidth,fSize,fType,fweight,textAlig,borColp,tableBg,headBg,bodybg,borColor,fColor)
-})
-
+let generateTable = function(){
+  numRow= numOfRow.value
+  numColm=numOfColm.value
+  tWidth=tableWidth.value+'%'
+  borWidth=borderWidth.value+'px solid black'
+  tableBg=tableBackground.value
+  headBg=headBackground.value
+  bodybg=bodyBackground.value
+  borColor=borderColor.value
+  fColor=fontColor.value
+  borColp=borderCollpse.value
+  if(borderCollpse.checked) borColp='collapse'
+  else borColp='separate'
+  fType=fontType.value
+  fweight=fontWeight.value
+  textAlig=textAlign.value
+  fSize=fontSize.value+'px'
+  createTable(numRow,numColm,tWidth,borWidth,fSize,fType,fweight,textAlig,borColp,tableBg,headBg,bodybg,borColor,fColor)
+  }
+//================
+btn_table_generate.addEventListener('click',generateTable)
 btn_code_generate.addEventListener('click', function(){ 
   tableContainer.textContent= tableContainer.innerHTML
 })
+//==================
+console.log(inputContainer)
+inputContainer.addEventListener('click',generateTable)
+
+inputContainer.addEventListener("keypress", function(e) {
+  let key = e.which || e.keyCode || 0;
+  if (key === 13) {
+     generateTable()
+  }
+});
+
+
+// document.querySelectorAll("#digitInput, #colorInput, #fontInput").forEach(function(el) {
+//   el.addEventListener("keypress", function(e) {
+//     let key = e.which || e.keyCode || 0;
+//     if (key === 13) {
+//        generateTable()
+//     }
+//   });
+// });
