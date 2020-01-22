@@ -1,7 +1,7 @@
 //  const  =document.querySelector('')
-let numRow,numColm,tWidth,borWidth,fSize,fweight,textAlig,borColp,tableBg
+let numRow,numColm,tWidth,borWidth,fSize,fweight,textAlig,borColp,tableBg,headBg,bodybg,borColor,fColor
 let tableContainer= document.querySelector('#table_container')
-let tableHeadArray=['th-a', 'th-b','th-c','th-d','th-e','th-f','th-g','th-h']
+let tableHeadArray=['th-A', 'th-B','th-C','th-D','th-E','th-F','th-G','th-H','th-I','th-J','th-K','th-L']
 const numOfRow =document.querySelector('#num_Row')
 const numOfColm=document.querySelector('#num_Colm')
 const tableWidth =document.querySelector('#table_width')
@@ -18,13 +18,20 @@ const textAlign=document.querySelector('#text_align')
 const fontSize=document.querySelector('#font_size')
 const btnTableGenerate =document.querySelector('#btn_table_generate')
 const btnCodeGenerate =document.querySelector('#btn_code_generate')
-function createTable(numRow,numColm,tWidth,borWidth,fSize,fType,fweight,textAlig,borColp,tableBg) {
-//fType,fweight,textAlign,fSize
-  tableContainer.innerHTML= ''       
+const inputContainer= document.querySelector('#inputContainer')
+const btnCopy=document.querySelector("#btn_copy")
+
+
+function createTable(numRow,numColm,tWidth,borWidth,fSize,fType,fweight,textAlig,borColp,tableBg,headBg,bodybg,borColor,fColor) {
+  tableContainer.innerHTML= '' 
+  btnCopy.textContent='' 
+  btnCopy.innerHTML='copy'
+  //tableContainer.textContent='' 
   const table = document.createElement("table");
   const tableBody = document.createElement("tbody");
   const tableHead = document.createElement("thead");
   const tableFooter = document.createElement("tfoot");
+  //
   table.setAttribute('width',tWidth)
   table.setAttribute('border',borWidth)
   table.style.fontSize = fSize
@@ -33,9 +40,14 @@ function createTable(numRow,numColm,tWidth,borWidth,fSize,fType,fweight,textAlig
   table.style.textAlign=textAlig
   table.style.borderCollapse=borColp
   table.style.background=tableBg
-   console.log(tableBg)
-    // console.log(fweight)
-  //table.style.fontFamily=fType
+  tableHead.style.background=headBg
+  tableBody.style.background= bodybg
+  table.style.borderColor=borColor
+  table.style.color=fColor
+  tableContainer.style.padding='20px'
+  tableContainer.style.height= 'calc(100% - 420px)'
+  tableContainer.style.minHeight = "calc(100vh - 420px"
+
 
     for ( let i=0 ; i<numRow;i++){                       
           //let row =document.createElement('tr')
@@ -45,7 +57,8 @@ function createTable(numRow,numColm,tWidth,borWidth,fSize,fType,fweight,textAlig
               for(let j=0; j<numColm ; j++){
                 let headCell =document.createElement('th')
                 headCell.innerHTML=tableHeadArray[j]
-                row.append(headCell)              
+                row.append(headCell)
+                row.style.lineHeight= '30px'              
               }
               row.setAttribute('class','row1 row2')
               tableHead.append(row);
@@ -75,43 +88,72 @@ function createTable(numRow,numColm,tWidth,borWidth,fSize,fType,fweight,textAlig
             row.setAttribute('class','row1 row2')
             tableFooter.append(row);         
           }
-    }   
+    }  
     table.append(tableHead,tableBody,tableFooter)
     tableContainer.append(table);
+     return tableContainer
 }
 
 
+let generateTable = function(){
+  numRow= numOfRow.value
+  numColm=numOfColm.value
+  tWidth=tableWidth.value+'%'
+  borWidth=borderWidth.value+'px solid black'
+  tableBg=tableBackground.value
+  headBg=headBackground.value
+  bodybg=bodyBackground.value
+  borColor=borderColor.value
+  fColor=fontColor.value
+  borColp=borderCollpse.value
+  if(borderCollpse.checked) borColp='collapse'
+  else borColp='separate'
+  fType=fontType.value
+  fweight=fontWeight.value
+  textAlig=textAlign.value
+  fSize=fontSize.value+'px'
+  createTable(numRow,numColm,tWidth,borWidth,fSize,fType,fweight,textAlig,borColp,tableBg,headBg,bodybg,borColor,fColor)
+  }
+//================
+btnTableGenerate.addEventListener('click',generateTable)
 
-btn_table_generate.addEventListener('click', function(){
-numRow= numOfRow.value
-numColm=numOfColm.value
-tWidth=tableWidth.value+'%'
-borWidth=borderWidth.value+'px solid black'
-tableBg=tableBackground.value
-console.log(tableBg)
-// headBg=headBackground.value
-// bodybg=bodyBackground.value
-// borColor=borderColor.value
-// fColor=fontColor.value
-borColp=borderCollpse.value
-if(borderCollpse.checked) borColp='collapse'
-else borColp='separate'
-fType=fontType.value
-fweight=fontWeight.value
-textAlig=textAlign.value
-fSize=fontSize.value+'px'
-
-
-createTable(numRow,numColm,tWidth,borWidth,fSize,fType,fweight,textAlig,borColp,tableBg)
-
-})
-
-
-
-
-btn_code_generate.addEventListener('click', function(){
-})
- //consol,
-
-  //console.log(numRow)
+btnCodeGenerate.addEventListener('click', function(){ 
+  generateTable()
+  let copyInput=tableContainer.innerHTML
+  tableContainer.textContent=copyInput
+  btnCopy.addEventListener ("click", ()=> {
+    copyFunction(tableContainer)
+    btnCopy.textContent='copied'
+  }  );
   
+})
+//==================
+
+inputContainer.addEventListener('click',generateTable)
+inputContainer.addEventListener("keypress", function(e) {
+  let key = e.which || e.keyCode || 0;
+  if (key === 13) {
+     generateTable()
+  }
+});
+
+
+
+const copyFunction=(element)=> {
+  let fakeTextArea = document.createElement("textarea");
+  fakeTextArea.value = element.textContent; //element is the js variable which content to be copied
+  document.body.appendChild(fakeTextArea);
+  fakeTextArea.select();
+  document.execCommand("Copy");
+  fakeTextArea.remove()} 
+
+
+
+// document.querySelectorAll("#digitInput, #colorInput, #fontInput").forEach(function(el) {
+//   el.addEventListener("keypress", function(e) {
+//     let key = e.which || e.keyCode || 0;
+//     if (key === 13) {
+//        generateTable()
+//     }
+//   });
+// });
