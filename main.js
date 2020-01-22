@@ -1,7 +1,7 @@
 //  const  =document.querySelector('')
 let numRow,numColm,tWidth,borWidth,fSize,fweight,textAlig,borColp,tableBg,headBg,bodybg,borColor,fColor
 let tableContainer= document.querySelector('#table_container')
-let tableHeadArray=['th-a', 'th-b','th-c','th-d','th-e','th-f','th-g','th-h']
+let tableHeadArray=['th-A', 'th-B','th-C','th-D','th-E','th-F','th-G','th-H','th-I','th-J','th-K','th-L']
 const numOfRow =document.querySelector('#num_Row')
 const numOfColm=document.querySelector('#num_Colm')
 const tableWidth =document.querySelector('#table_width')
@@ -19,13 +19,14 @@ const fontSize=document.querySelector('#font_size')
 const btnTableGenerate =document.querySelector('#btn_table_generate')
 const btnCodeGenerate =document.querySelector('#btn_code_generate')
 const inputContainer= document.querySelector('#inputContainer')
+const btnCopy=document.querySelector("#btn_copy")
 
 
 function createTable(numRow,numColm,tWidth,borWidth,fSize,fType,fweight,textAlig,borColp,tableBg,headBg,bodybg,borColor,fColor) {
-  tableContainer.innerHTML= ''  
-  tableContainer.textContent='' 
-  console.log(tableContainer.textContent)
-  console.log(tableContainer.innerHTML)
+  tableContainer.innerHTML= '' 
+  btnCopy.textContent='' 
+  btnCopy.innerHTML='copy'
+  //tableContainer.textContent='' 
   const table = document.createElement("table");
   const tableBody = document.createElement("tbody");
   const tableHead = document.createElement("thead");
@@ -43,6 +44,10 @@ function createTable(numRow,numColm,tWidth,borWidth,fSize,fType,fweight,textAlig
   tableBody.style.background= bodybg
   table.style.borderColor=borColor
   table.style.color=fColor
+  tableContainer.style.padding='20px'
+  tableContainer.style.height= 'calc(100% - 420px)'
+  tableContainer.style.minHeight = "calc(100vh - 420px"
+
 
     for ( let i=0 ; i<numRow;i++){                       
           //let row =document.createElement('tr')
@@ -52,7 +57,8 @@ function createTable(numRow,numColm,tWidth,borWidth,fSize,fType,fweight,textAlig
               for(let j=0; j<numColm ; j++){
                 let headCell =document.createElement('th')
                 headCell.innerHTML=tableHeadArray[j]
-                row.append(headCell)              
+                row.append(headCell)
+                row.style.lineHeight= '30px'              
               }
               row.setAttribute('class','row1 row2')
               tableHead.append(row);
@@ -109,20 +115,38 @@ let generateTable = function(){
   createTable(numRow,numColm,tWidth,borWidth,fSize,fType,fweight,textAlig,borColp,tableBg,headBg,bodybg,borColor,fColor)
   }
 //================
-btn_table_generate.addEventListener('click',generateTable)
-btn_code_generate.addEventListener('click', function(){ 
-  tableContainer.textContent= tableContainer.innerHTML
+btnTableGenerate.addEventListener('click',generateTable)
+
+btnCodeGenerate.addEventListener('click', function(){ 
+  generateTable()
+  let copyInput=tableContainer.innerHTML
+  tableContainer.textContent=copyInput
+  btnCopy.addEventListener ("click", ()=> {
+    copyFunction(tableContainer)
+    btnCopy.textContent='copied'
+  }  );
+  
 })
 //==================
-console.log(inputContainer)
-inputContainer.addEventListener('click',generateTable)
 
+inputContainer.addEventListener('click',generateTable)
 inputContainer.addEventListener("keypress", function(e) {
   let key = e.which || e.keyCode || 0;
   if (key === 13) {
      generateTable()
   }
 });
+
+
+
+const copyFunction=(element)=> {
+  let fakeTextArea = document.createElement("textarea");
+  fakeTextArea.value = element.textContent; //element is the js variable which content to be copied
+  document.body.appendChild(fakeTextArea);
+  fakeTextArea.select();
+  document.execCommand("Copy");
+  fakeTextArea.remove()} 
+
 
 
 // document.querySelectorAll("#digitInput, #colorInput, #fontInput").forEach(function(el) {
