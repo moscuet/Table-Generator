@@ -1,13 +1,157 @@
-#table {
-    border: 2px silid red;
-    border-collapse: collapse; 
-    font-family: Arial, Helvetica, sans-serif;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
 }
-input { 
-    margin: 10px 10px;
+html{
+    font-size: 1rem;
+}
+#container {
+   display: flex;
+   flex-direction: column;
+   padding:0px  2rem;
+   width: 48rem;
+   min-height: 100vh;
+}
+.headline {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: rgba(114, 111, 110, 0.5);
+    display: flex;
+    width: 100%;
+    height:7.5rem;
+}
+.headline p:first-of-type{
+    font-size:xx-large;
+   padding-top: 20px;
+    display: flex;
+    width: 50%;
+    justify-content: flex-end;
+    color: rgb(63, 59, 59)
+
+
+}
+.headline p:last-of-type{
+    display: flex;
+    width: 50%;
+    justify-content:start;
+    align-items: flex-end;
+    color: rgb(209, 138, 45);
+    font-size:3rem;
+    padding-bottom: 1.25rem;
+
+}
+#inputContainer{
+    display: flex;
+    flex-direction: column;
+    background:rgb(224, 222, 222);
+    width:44rem;
+    padding:1rem;   
+}
+input{
+    text-align: center;
+    line-height: 2rem;
+    font-size: 1.0rem;
 }
 
-select { 
-    margin: 10px 10px;
+
+#digitInput, #colorInput, #fontInput,#fontInput {
+    width:100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    justify-content;
+    text-align: center;
+}
+
+#digitInput div {
+    padding: .5rem;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+   }
+ 
+
+#colorInput div {
+padding: .5rem;
+ width: 50%;
+ display: flex;
+ justify-content: space-between;
+
+}
+#colorInput input{
+    width: 40%;
+    height: 2rem;
+}
+
+#fontInput div {
+    padding: .5rem;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+#fontInput select{
+    width: 60%;
+    height: 2rem;
+    font-size: 1.2rem;
+    border: rgb(209, 138, 45);
+}
+#fontInput input {
+    width: 2rem;
+    height: 2rem;
+}
+#fontInput label {
+    display: flex;
+    text-align: center;
+}
+
+
+.generatTab {
+    display: flex;
+   justify-content: center;
+   background: #E0DEDE;
+  padding-bottom: 40px;
+}
+#btn_table_generate, #btn_code_generate, #btn_copy{
+  height: 50px;
+  font-size: large;
+  padding: 10px 15px;
+  border-radius: 5px;
+  outline-style: none;
+  width: 25%;
+}
+#btn_table_generate{
+    background: #d50000;
+}
+#btn_code_generate {
+    background:#311b92;
+}
+#btn_copy {
+    background: #1565c0
+}
+
+#table_container {
+    font-size: 24px;
+    margin-top: 20px;
+    justify-content: center;
+    display: flex;
+    background:linear-gradient(to bottom, #E0DEDE  0%,rgb(207, 159, 159) 100%);
+    min-width: fit-content;
+    min-height: calc(100%-420px);
+}
+table {
+    margin-top: 20px;
+  }
+  table tr:nth-child(even) {
+      background: rgb(119, 223, 133);
+      padding:5px;
+  }
+table td,th,tfoot {
+    height: 50px;
+}
+table tr:nth-child(even) {
+    background: rgb(119, 223, 133);
+    padding:5px;
 }
