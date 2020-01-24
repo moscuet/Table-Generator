@@ -7,8 +7,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="./styles.css">
 </head>
-<body>
-    <div class="wrapper">
+    <body >
+        <div id="wrapper">
         <div id="container">
             <div class="headline">
                 <p> Customize Your Table</p>
@@ -19,7 +19,7 @@
                 
                         <div>
                             <label for="num_Row">Number of rows</label>
-                            <input type="number" id="num_Row" value ="10" > 
+                            <input type="number" id="num_Row" value ="5" > 
                         </div>
                         <div>
                             <label for="num_Colm">Number of column</label>
@@ -114,7 +114,8 @@
                             <option value="right">right</option>
                             <option value="justify">justify</option>
                         </select>
-                    </div>                   
+                    </div>
+                    
                 </div> 
                         
             </div>
@@ -122,17 +123,12 @@
                 <button type="submit" id="btn_table_generate">Generate Table</button>
                 <button type="submit" id="btn_code_generate">Generate Code</button>
                 <button type="button" id="btn_copy">Copy</button>
-            </div>   
+            </div> 
+    
             <div id="table_container">
             </div>
         </div> 
-    </div>
-     
-    <footer>
-        <div><p class="privacy"> © 2020 Let's Develop| Privacy Policy</p></div>
-        <div><img src="./assets/logo_let's develop.png" alt="" height="120px"></div>
-    </footer>  
-
+    </divid="wrapper"> 
     <script src="./main.js"> </script>
 </body>
 </html>
