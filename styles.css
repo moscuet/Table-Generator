@@ -4,17 +4,8 @@
     margin: 0px;
     padding: 0px;
 }
-body, html {
-    height:100%;
-    margin:0;
-}
 html{
-    font-size: 16px;
-}
-
-#wrapper {
-    display: flex;
-    align-items: center;
+    font-size: 1rem;
 }
 .wrapper {
     width: 100%;
@@ -22,7 +13,6 @@ html{
     justify-content: center;
 }
 #container {
-    margin: auto;
    display: flex;
    flex-direction: column;
    padding:0px  2rem;
@@ -80,7 +70,7 @@ input{
     display: flex;
     flex-wrap: wrap;
     margin-top: 1rem;
-    justify-content: center;
+    justify-content;
     text-align: center;
 }
 
