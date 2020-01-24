@@ -114,8 +114,6 @@ inputContainer.addEventListener("keypress", function(e) {
   }
 });
 
-
-
 const copyFunction=(element)=> {
   let fakeTextArea = document.createElement("textarea");
   fakeTextArea.value = element.textContent; //element is the js variable which content to be copied
@@ -123,14 +121,3 @@ const copyFunction=(element)=> {
   fakeTextArea.select();
   document.execCommand("Copy");
   fakeTextArea.remove()} 
-
-
-
-// document.querySelectorAll("#digitInput, #colorInput, #fontInput").forEach(function(el) {
-//   el.addEventListener("keypress", function(e) {
-//     let key = e.which || e.keyCode || 0;
-//     if (key === 13) {
-//        generateTable()
-//     }
-//   });
-// });
