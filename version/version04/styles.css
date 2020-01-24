@@ -4,26 +4,23 @@
     margin: 0px;
     padding: 0px;
 }
-body, html {
-    height:100%;
-    margin:0;
-}
 html{
-    font-size: 16px;
+    font-size: 1rem;
 }
-
-#wrapper {
+.wrapper {
+    width: 100%;
     display: flex;
-    align-items: center;
+    justify-content: center;
 }
 #container {
-    margin: auto;
    display: flex;
    flex-direction: column;
    padding:0px  2rem;
    width: 48rem;
    min-height: 100vh;
 }
+
+
 .headline {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -53,6 +50,7 @@ html{
 
 }
 #inputContainer{
+    font-size: x-large;
     display: flex;
     flex-direction: column;
     background:rgb(224, 222, 222);
@@ -63,6 +61,7 @@ input{
     text-align: center;
     line-height: 2rem;
     font-size: 1.0rem;
+    width: 40%;
 }
 
 
@@ -125,32 +124,33 @@ padding: .5rem;
   padding-bottom: 40px;
 }
 #btn_table_generate, #btn_code_generate, #btn_copy{
-  height: 50px;
-  font-size: large;
-  padding: 10px 15px;
-  border-radius: 5px;
-  outline-style: none;
-  width: 25%;
-}
-#btn_table_generate{
-    background: #d50000;
-}
-#btn_code_generate {
-    background:#311b92;
-}
-#btn_copy {
-    background: #1565c0
-}
 
-#table_container {
-    font-size: 24px;
-    margin-top: 20px;
-    justify-content: center;
-    display: flex;
-    background:linear-gradient(to bottom, #E0DEDE  0%,rgb(207, 159, 159) 100%);
-    min-width: fit-content;
-    min-height: calc(100%-420px);
-}
+    height: 40px;
+    font-size:16px;
+    padding: 10px 15px;
+    background: #01579b;
+    border-radius: 5px;
+    outline-style: none;
+    width: 25%;
+    color: beige;
+  }
+  #btn_code_generate{
+      background:hsl(251, 69%, 34%);
+  }
+  #btn_copy {
+      background: #558b2f;
+  
+  }
+  #table_container {
+      font-size: 16px;
+      justify-content: center;
+      display: flex;
+      background:linear-gradient(to bottom, #E0DEDE  0%,#3f51b5 100%);
+      min-width: fit-content;
+      height: calc(100% - 570px);
+      min-height : calc(100vh - 570px );
+  
+  }
 table {
     margin-top: 20px;
   }
@@ -164,4 +164,24 @@ table td,th,tfoot {
 table tr:nth-child(even) {
     background: rgb(119, 223, 133);
     padding:5px;
+}
+
+table td,th,tfoot {
+    height: 50px;
+}
+
+footer {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: x-large;
+}
+.privacy {
+margin-right: 40px;
+}
+
+@media only screen and (min-width: 992px) {
+    
 }
