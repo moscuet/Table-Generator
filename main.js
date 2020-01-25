@@ -44,8 +44,7 @@ function createTable() {
   tableContainer.style.padding='20px'
   tableContainer.style.height= 'calc(100% - 514px)'
   tableContainer.style.minHeight = "calc(100vh - 514px"
-  if(borderCollpse.checked) table.style.borderCollapse=borderCollpse.value
-  else table.style.borderCollapse='separate'
+  table.style.borderCollpse = borderCollpse.checked ? 'collapse' : 'separate'
 
   for ( let i=0 ; i<numOfRow.value;i++){                                           
     if(i==0){
